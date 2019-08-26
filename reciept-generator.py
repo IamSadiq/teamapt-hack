@@ -116,6 +116,7 @@ inputText2 = "\n                                  " \
       "\n                                  " \
       "\n                                  " \
       "\n                                  " \
+      "\n                                  " \
       "\n      **** CUSTOMER COPY ****     " \
       "\n            MONIEPOINT            " \
       "\n  {}  " \
@@ -219,7 +220,7 @@ def generateBlankImageWithText(blank_image, text,width, height):
 # ADD LOGO TO RECIEPT
 def addLogoToImage(image, logo):
 
-    x_offset=y_offset=50
+    x_offset=y_offset=150
     # image[y_offset:y_offset+logo.shape[0], x_offset:x_offset+logo.shape[1]] = logo
 
     y1, y2 = y_offset, y_offset + logo.shape[0]
@@ -238,8 +239,8 @@ def addLogoToImage(image, logo):
 def addApprovedToImage(image, approved):
 
     h, w = image.shape[:2]
-    x_offset=w-w
-    y_offset=int(h/2)+200
+    x_offset=w-w + 100
+    y_offset=int(h/2)+300
     # image[y_offset:y_offset+approved.shape[0], x_offset:x_offset+approved.shape[1]] = approved
 
     # approved = cv2.resize(approved)
@@ -325,7 +326,16 @@ for k in range(30):
 
     # noise_img1 = cv2.imread("noise-images/"+str(k+1)+".jpg")
 
-    noise_img1 = cv2.imread("noise-images/"+str(k+1)+".jpg")
+    if k > 20:
+        if k+1 is 24 or k+1 is 25:
+            noise_img1 = cv2.imread("noise-images/"+str(k+1)+".jpg")
+        else:
+            noise_img1 = cv2.imread("noise-images/"+str(k+1)+".jpeg")
+    else:
+        noise_img1 = cv2.imread("noise-images/"+str(k+1)+".jpg")
+
+
+    # noise_img1 = cv2.imread("noise-images/"+str(k+1)+".jpg")
     final_noise = resize(noise_img1, width, height)
 
     final_noise = addApprovedToImage(final_noise, approved)
