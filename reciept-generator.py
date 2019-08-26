@@ -318,26 +318,20 @@ approvedImage = addApprovedToImage(logoImage, approved)
 skimage.io.imsave("output/200.png", approvedImage)
 
 # RESIZE NOISE IMAGES AND NOISE IMAGE WITH CONTENT IMAGE
-for k in range(30):
-
+for k in range(50):
+    print(k)
     # noise1 = r.randint(1,15)
     # noise2 = r.randint(16,30)
-    # print(noise2)
-
-    # noise_img1 = cv2.imread("noise-images/"+str(k+1)+".jpg")
 
     if k > 20:
         if k+1 is 24 or k+1 is 25:
-            noise_img1 = cv2.imread("noise-images/"+str(k+1)+".jpg")
+            img = cv2.imread("noise-images/"+str(k+1)+".jpg")
         else:
-            noise_img1 = cv2.imread("noise-images/"+str(k+1)+".jpeg")
+            img = cv2.imread("noise-images/"+str(k+1)+".jpeg")
     else:
-        noise_img1 = cv2.imread("noise-images/"+str(k+1)+".jpg")
+        img = cv2.imread("noise-images/"+str(k+1)+".jpg")
 
-
-    # noise_img1 = cv2.imread("noise-images/"+str(k+1)+".jpg")
-    final_noise = resize(noise_img1, width, height)
-
+    final_noise = resize(img, width, height)
     final_noise = addApprovedToImage(final_noise, approved)
 
     # if noise2 > 21:
@@ -366,7 +360,7 @@ for k in range(30):
     resized_final = resize(logoImageWithNoise, wi + r.randint(1,10), hi + r.randint(1,10))
 
     gimg = skimage.util.random_noise(resized_final, mode="localvar")
-    skimage.io.imsave("fin/"+str(k+1)+".jpg", resized_final)
+    skimage.io.imsave("final/"+str(k+1)+".jpg", resized_final)
 
 
 # ADDING YET MORE NOISE
