@@ -10,6 +10,13 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 # write white blank image
 approved = np.ones(shape=[height, width, 3], dtype=np.uint8)
 cv2.putText(approved, "APPROVED", (int(width/2)-250, int(height/2)+40), font, fontSize, fontColor, fontWeight)
+
+x, y = 0,0
+w = 100
+
+cv2.rectangle(approved, (x, y), (x+w, height), (255, 255, 255), -1)
+cv2.rectangle(approved, (width-w, y), (width, height), (255, 255, 255), -1)
+
 cv2.imwrite('generated/approved.jpg', approved)
 
 # cv2.imshow("blank: ", approved)
