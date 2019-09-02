@@ -190,7 +190,7 @@ print("justifier(terminalLabel, terminalId)", justifier(terminalLabel, terminalI
 
 # GENERATE BLANK IMAGE
 def generateBlankImage(we, he):
-    return 255 * np.zeros(shape=[he, we, 3], dtype=np.uint8)
+    return 255 * np.ones(shape=[he, we, 3], dtype=np.uint8)
 
 # write white blank image
 def generateBlankImageWithText(blank_image, text,width, height):
@@ -318,7 +318,7 @@ approvedImage = addApprovedToImage(logoImage, approved)
 skimage.io.imsave("output/200.png", approvedImage)
 
 # RESIZE NOISE IMAGES AND NOISE IMAGE WITH CONTENT IMAGE
-for k in range(50):
+for k in range(3):
     print(k)
     # noise1 = r.randint(1,15)
     # noise2 = r.randint(16,30)

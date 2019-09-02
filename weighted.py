@@ -1,6 +1,7 @@
 # import OpenCV file 
 import cv2
 import resize as rs
+import random as r
 
 cv2 = cv2.cv2
 
@@ -34,9 +35,12 @@ def placeImageOnBackground(inputImg, backImg):
 
     h, w, chan = backImg.shape
 
+    row_pad = r.randint(int(w/4), int(w/2))
+    col_pad = r.randint(int(w/4), int(w/2))
+
     # I want to put logo on top-left corner, So I create a ROI
     rows,cols,channels = inputImg.shape
-    roi = backImg[int(w/4):rows+int(w/4), int(w/2):cols+int(w/2)]
+    roi = backImg[row_pad:rows+row_pad, col_pad:cols+col_pad]
 
     # Now create a mask of logo and create its inverse mask also
     inputImggray = cv2.cvtColor(inputImg,cv2.COLOR_BGR2GRAY)
@@ -51,7 +55,7 @@ def placeImageOnBackground(inputImg, backImg):
 
     # Put logo in ROI and modify the main image
     dst = cv2.add(backImg_bg,inputImg_fg)
-    backImg[int(w/4):rows+int(w/4), int(w/2):cols+int(w/2)] = dst
+    backImg[row_pad:rows+row_pad, col_pad:cols+col_pad] = dst
 
-    cv2.imwrite('./backgrounds/out.jpg', backImg)
+    # cv2.imwrite('./backgrounds/out.jpg', backImg)
     return backImg

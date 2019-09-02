@@ -13,8 +13,8 @@ def createShadow(image, offset, border, background):
    back = Image.new(image.mode, (totalWidth, totalHeight), background)
 
    back_shadow = back.copy()
-   back_shadow.putalpha(100)
-   back_shadow.save('./backgrounds/shadow.png')
+   back_shadow.putalpha(50)
+   # back_shadow.save('./backgrounds/shadow.png')
    return back_shadow
 
 def addShadow(image, back_shadow, offset, border, shadow, iterations):
@@ -36,7 +36,7 @@ def addShadow(image, back_shadow, offset, border, shadow, iterations):
    imageTop = border - min(offset[1], 0)
    back_shadow.paste(image, (imageLeft, imageTop))
 
-   back_shadow.save("./backgrounds/shadow_image.png")
+   # back_shadow.save("./backgrounds/shadow_image.png")
    return back_shadow
 
 
@@ -89,7 +89,7 @@ def dropShadow(image, offset=(170,-170), background=0x000, shadow=0x231411,
 
 # TEST IT OUT
 img = Image.open("./final/50.jpg")
-img.putalpha(255)
+# img.putalpha(255)
 
 # shadow = createShadow(img, offset=(170,-170), border=0, background=0x000)
 

@@ -15,7 +15,7 @@ img_output = np.zeros(img.shape, dtype=img.dtype)
 for i in range(rows):
     for j in range(cols):
         # offset_x = int(20.0 * math.sin(2 * 3.14 * i / 180))
-        offset_x = int(5.0 * math.sin(2 * 3.14 * i / 180))
+        offset_x = int(3.5 * math.sin(2 * 3.14 * i / 180))
         offset_y = 0
         if j+offset_x < rows:
             img_output[i,j] = img[i,(j+offset_x)%cols]
