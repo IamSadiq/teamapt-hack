@@ -17,27 +17,27 @@ def createShadow(image, offset, border, background):
    # back_shadow.save('./backgrounds/shadow.png')
    return back_shadow
 
-def addShadow(image, back_shadow, offset, border, shadow, iterations):
+def addShadow(image, image_shadow, offset, border, shadow_color, iterations):
    # Place the shadow, taking into account the offset from the image
    shadowLeft = border + max(offset[0], 0)
    shadowTop = border + max(offset[1], 0)
-   back_shadow.paste(shadow, [shadowLeft, shadowTop, shadowLeft + image.size[0],
+   image_shadow.paste(shadow_color, [shadowLeft, shadowTop, shadowLeft + image.size[0],
                        shadowTop + image.size[1]] )
    # Apply the filter to blur the edges of the shadow.  Since a small kernel
    # is used, the filter must be applied repeatedly to get a decent blur.
    n = 0
    while n < iterations:
        # back = back.filter(ImageFilter.BLUR)
-       back_shadow = back_shadow.filter(ImageFilter.GaussianBlur(20))
+       image_shadow = image_shadow.filter(ImageFilter.GaussianBlur(20))
        n += 1
 
    # Paste the input image onto the shadow backdrop
    imageLeft = border - min(offset[0], 0)
    imageTop = border - min(offset[1], 0)
-   back_shadow.paste(image, (imageLeft, imageTop))
+   image_shadow.paste(image, (imageLeft, imageTop))
 
-   # back_shadow.save("./backgrounds/shadow_image.png")
-   return back_shadow
+   # image_shadow.save("./backgrounds/shadow_image.png")
+   return image_shadow
 
 
 def dropShadow(image, offset=(170,-170), background=0x000, shadow=0x231411,
