@@ -27,8 +27,8 @@ def addShadow(image, image_shadow, offset, border, shadow_color, iterations):
    # is used, the filter must be applied repeatedly to get a decent blur.
    n = 0
    while n < iterations:
-       # back = back.filter(ImageFilter.BLUR)
-       image_shadow = image_shadow.filter(ImageFilter.GaussianBlur(20))
+       image_shadow = image_shadow.filter(ImageFilter.BLUR)
+    #    image_shadow = image_shadow.filter(ImageFilter.GaussianBlur(20))
        n += 1
 
    # Paste the input image onto the shadow backdrop
