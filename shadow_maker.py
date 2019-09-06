@@ -1,6 +1,6 @@
-from PIL import Image, ImageFilter, ImageOps
 import cv2
-import numpy as np
+from PIL import Image, ImageFilter
+
 # import cloudinary
 
 cv2 = cv2.cv2
@@ -40,7 +40,7 @@ def addShadow(image, image_shadow, offset, border, shadow_color, iterations):
    return image_shadow
 
 
-def dropShadow(image, offset=(170,-170), background=0x000, shadow=0x231411,
+def dropShadow(image, offset=(170,-170), background=0x808080, shadow=0x231411,
                border=0, iterations=5):
    """
    Add a gaussian blur drop shadow to an image.
